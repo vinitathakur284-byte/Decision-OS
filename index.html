@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decision Intelligence Infrastructure for Women Leaders</title>
+  <meta name="description" content="A state-aware decision intelligence platform for women leaders navigating high-stakes choices with clarity, energy awareness, and strategic calm." />
+  <style>
+    :root {
+      --ink: #161615;
+      --muted: #626965;
+      --line: #d7ded8;
+      --paper: #f6f7f4;
+      --panel: #ffffff;
+      --charcoal: #242321;
+      --moss: #526451;
+      --clay: #a65f43;
+      --rose: #c8a39b;
+      --sage: #dbe5dc;
+      --white: #ffffff;
+      --shadow: 0 24px 70px rgba(31, 27, 22, .12);
+      --radius: 8px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .55;
+      background-image:
+        linear-gradient(rgba(22, 22, 21, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 22, 21, .025) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, #000, transparent 85%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-shell {
+      overflow: hidden;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(246, 247, 244, .78);
+      border-bottom: 1px solid rgba(96, 89, 79, .15);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--charcoal);
+      background: var(--charcoal);
+      color: var(--paper);
+      font-family: Georgia, serif;
+      font-size: 18px;
+    }
+
+    .brand-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--charcoal);
+      border-radius: 4px;
+      background: var(--charcoal);
+      color: var(--paper);
+      font-weight: 650;
+      font-size: 14px;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+
+    .button:hover,
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(22, 22, 21, .18);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--charcoal);
+      border-color: rgba(36, 35, 33, .35);
+    }
+
+    .hero {
+      min-height: 94vh;
+      display: grid;
+      align-items: end;
+      padding: 120px 24px 48px;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(246, 247, 244, .98) 0%, rgba(246, 247, 244, .9) 38%, rgba(246, 247, 244, .12) 72%),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85") center right / cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 150px;
+      background: linear-gradient(to bottom, transparent, var(--paper));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 760px) minmax(240px, 360px);
+      gap: 56px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--moss);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: 0;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 92px);
+      max-width: 820px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 4.6vw, 62px);
+      max-width: 820px;
+    }
+
+    h3 {
+      font-size: 25px;
+      line-height: 1.16;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin: 26px 0 0;
+      color: #4d4a45;
+      font-size: clamp(18px, 2vw, 22px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .hero-panel {
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(96, 89, 79, .2);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+    }
+
+    .panel-label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 750;
+    }
+
+    .state-meter {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .meter-row {
+      display: grid;
+      grid-template-columns: 92px 1fr 38px;
+      gap: 12px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .bar {
+      height: 8px;
+      overflow: hidden;
+      background: #e0e6df;
+      border-radius: 99px;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: var(--value);
+      background: var(--moss);
+      border-radius: inherit;
+    }
+
+    .panel-note {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: #36332f;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      line-height: 1.28;
+    }
+
+    section {
+      padding: 96px 24px;
+      position: relative;
+    }
+
+    .inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: clamp(36px, 7vw, 96px);
+      align-items: start;
+    }
+
+    .section-intro {
+      position: sticky;
+      top: 102px;
+    }
+
+    .lead {
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 19px;
+      max-width: 650px;
+    }
+
+    .problem-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .problem-item,
+    .feature-card,
+    .trust-card,
+    .offer-card {
+      border: 1px solid rgba(96, 89, 79, .18);
+      background: rgba(255, 255, 255, .68);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 8px 32px rgba(31, 27, 22, .05);
+    }
+
+    .problem-item {
+      min-height: 152px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .problem-item p,
+    .feature-card p,
+    .trust-card p,
+    .offer-card p {
+      margin: 14px 0 0;
+      color: var(--muted);
+    }
+
+    .dark-band {
+      background: var(--charcoal);
+      color: var(--paper);
+    }
+
+    .dark-band .lead,
+    .dark-band p,
+    .dark-band .panel-label {
+      color: #d8d0c4;
+    }
+
+    .difference-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 44px;
+    }
+
+    .difference-card {
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(248, 244, 237, .16);
+      background: rgba(255, 255, 255, .045);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .difference-number {
+      color: var(--rose);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .difference-card p {
+      margin-top: 18px;
+      font-size: 16px;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 48px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .process-step {
+      background: var(--paper);
+      padding: 28px;
+      min-height: 250px;
+    }
+
+    .step-index {
+      display: inline-grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--moss);
+      color: var(--moss);
+      margin-bottom: 34px;
+      font-weight: 800;
+    }
+
+    .features-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      margin-top: 42px;
+    }
+
+    .feature-card {
+      min-height: 210px;
+    }
+
+    .feature-card.feature-main {
+      min-height: 444px;
+      background:
+        linear-gradient(160deg, rgba(82, 100, 81, .88), rgba(36, 35, 33, .92)),
+        url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=80") center / cover;
+      color: var(--paper);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .feature-card.feature-main p {
+      color: #ebe2d5;
+      max-width: 530px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .trust-band {
+      background: #e8ebe0;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      margin-top: 44px;
+    }
+
+    .stat {
+      font-family: Georgia, serif;
+      font-size: 44px;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 44px;
+      align-items: stretch;
+    }
+
+    .offer-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 330px;
+      background: var(--panel);
+    }
+
+    .offer-card.featured {
+      background: var(--charcoal);
+      color: var(--paper);
+    }
+
+    .offer-card.featured p,
+    .offer-card.featured li {
+      color: #ded6cb;
+    }
+
+    .offer-card ul {
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+    }
+
+    .offer-card li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .offer-card li::before {
+      content: "";
+      flex: 0 0 7px;
+      width: 7px;
+      height: 7px;
+      margin-top: 10px;
+      background: var(--clay);
+    }
+
+    .vision {
+      padding: 106px 24px;
+      background:
+        linear-gradient(90deg, rgba(22, 22, 21, .88), rgba(22, 22, 21, .6)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=85") center / cover;
+      color: var(--paper);
+    }
+
+    .vision-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 62px;
+      align-items: center;
+    }
+
+    .vision-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .vision-list span {
+      border: 1px solid rgba(248, 244, 237, .18);
+      padding: 14px 16px;
+      background: rgba(248, 244, 237, .06);
+      color: #eee6db;
+    }
+
+    .final-cta {
+      padding: 112px 24px 64px;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      margin: 0 auto;
+    }
+
+    .final-cta .lead {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .beta-form {
+      width: min(100%, 620px);
+      margin: 34px auto 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+    }
+
+    input {
+      width: 100%;
+      min-height: 50px;
+      border: 1px solid rgba(36, 35, 33, .26);
+      background: var(--panel);
+      border-radius: 4px;
+      padding: 0 16px;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    input:focus {
+      outline: 2px solid rgba(82, 100, 81, .28);
+      border-color: var(--moss);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 108px;
+        background:
+          linear-gradient(to bottom, rgba(246, 247, 244, .94), rgba(246, 247, 244, .78)),
+          url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85") center / cover;
+      }
+
+      .hero-inner,
+      .split,
+      .features-wrap,
+      .vision-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-intro {
+        position: relative;
+        top: auto;
+      }
+
+      .difference-grid,
+      .process,
+      .trust-grid,
+      .offer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-panel {
+        max-width: 520px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-inner {
+        padding: 12px 16px;
+      }
+
+      .brand-name {
+        font-size: 16px;
+        white-space: normal;
+      }
+
+      .nav-cta {
+        min-height: 38px;
+        padding: 0 12px;
+        font-size: 13px;
+      }
+
+      .hero,
+      section,
+      .vision,
+      .final-cta {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero {
+        padding-bottom: 34px;
+      }
+
+      .hero-actions,
+      .beta-form {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+      }
+
+      .button,
+      .beta-form .button {
+        width: 100%;
+      }
+
+      .difference-grid,
+      .process,
+      .feature-grid,
+      .trust-grid,
+      .offer-grid,
+      .vision-list {
+        grid-template-columns: 1fr;
+      }
+
+      .process-step,
+      .difference-card,
+      .offer-card {
+        min-height: auto;
+      }
+
+      h1 {
+        font-size: clamp(42px, 14vw, 62px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .button:hover,
+      .nav-cta:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Decision OS home">
+          <span class="mark">D</span>
+          <span class="brand-name">Decision OS</span>
+        </a>
+        <div class="nav-links" aria-label="Page sections">
+          <a href="#difference">Difference</a>
+          <a href="#features">Features</a>
+          <a href="#enterprise">Enterprise</a>
+          <a href="#offerings">Offerings</a>
+        </div>
+        <a class="nav-cta" href="#apply">Apply for Beta</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow reveal">Decision Intelligence Infrastructure for Women Leaders</div>
+          <h1 class="reveal">Make important decisions from a clearer state.</h1>
+          <p class="hero-copy reveal">A premium, state-aware operating system for women leaders navigating pressure, ambition, energy, and high-stakes choice.</p>
+          <div class="hero-actions reveal">
+            <a class="button" href="#apply">Apply for Private Beta</a>
+            <a class="button secondary" href="#how">See How It Works</a>
+          </div>
+        </div>
+        <aside class="hero-panel reveal" aria-label="Energy intelligence preview">
+          <div class="panel-label">Today&apos;s Decision State</div>
+          <div class="state-meter">
+            <div class="meter-row">
+              <span>Clarity</span>
+              <div class="bar"><span style="--value: 82%"></span></div>
+              <strong>82</strong>
+            </div>
+            <div class="meter-row">
+              <span>Capacity</span>
+              <div class="bar"><span style="--value: 64%"></span></div>
+              <strong>64</strong>
+            </div>
+            <div class="meter-row">
+              <span>Pressure</span>
+              <div class="bar"><span style="--value: 38%; background: var(--clay)"></span></div>
+              <strong>38</strong>
+            </div>
+          </div>
+          <p class="panel-note">Your best window for strategic decisions is late morning. Use the afternoon for review, not commitment.</p>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <section id="problem">
+        <div class="inner split">
+          <div class="section-intro reveal">
+            <div class="eyebrow">The Hidden Problem</div>
+            <h2>Most leadership tools ignore the state you are making decisions from.</h2>
+            <p class="lead">Decision fog is rarely a lack of intelligence. It is often a mismatch between pressure, energy, timing, and the emotional load of leadership.</p>
+          </div>
+          <div class="problem-list">
+            <article class="problem-item reveal">
+              <h3>Decision Fog</h3>
+              <p>High-achieving leaders can carry too many unresolved variables at once, making every choice feel heavier than it should.</p>
+            </article>
+            <article class="problem-item reveal">
+              <h3>Burnout Distortion</h3>
+              <p>When capacity is low, urgent decisions can look more threatening, more binary, and more irreversible.</p>
+            </article>
+            <article class="problem-item reveal">
+              <h3>The State-Awareness Gap</h3>
+              <p>Calendars track time. Task systems track output. Few systems help a leader understand the internal conditions shaping judgment.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="dark-band" id="difference">
+        <div class="inner">
+          <div class="reveal">
+            <div class="eyebrow">What Makes This Different</div>
+            <h2>Built for strategic clarity, not self-optimization theater.</h2>
+            <p class="lead">Decision OS combines state-aware support, Energy Intelligence, and AI-guided reflection to help leaders act with precision instead of pressure.</p>
+          </div>
+          <div class="difference-grid">
+            <article class="difference-card reveal">
+              <span class="difference-number">01 / State-Aware Support</span>
+              <div>
+                <h3>Context before advice.</h3>
+                <p>The platform reads your decision through capacity, timing, emotional charge, and leadership stakes before suggesting a next move.</p>
+              </div>
+            </article>
+            <article class="difference-card reveal">
+              <span class="difference-number">02 / Energy Intelligence</span>
+              <div>
+                <h3>Your capacity becomes strategic data.</h3>
+                <p>Patterns across energy, pressure, focus, and recovery become a practical leadership signal, not another thing to optimize.</p>
+              </div>
+            </article>
+            <article class="difference-card reveal">
+              <span class="difference-number">03 / AI Clarity Chat</span>
+              <div>
+                <h3>A private advisor for complex moments.</h3>
+                <p>Structured prompts help you separate instinct, fear, evidence, values, and timing before you commit.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="how">
+        <div class="inner">
+          <div class="reveal">
+            <div class="eyebrow">How It Works</div>
+            <h2>A calm loop for better leadership decisions.</h2>
+            <p class="lead">Onboarding establishes your baseline. Daily inputs refine your decision state. AI guidance turns reflection into action.</p>
+          </div>
+          <div class="process">
+            <article class="process-step reveal">
+              <span class="step-index">1</span>
+              <h3>Map your baseline</h3>
+              <p>Establish leadership priorities, decision patterns, energy rhythms, and pressure triggers.</p>
+            </article>
+            <article class="process-step reveal">
+              <span class="step-index">2</span>
+              <h3>Track state signals</h3>
+              <p>Capture capacity, focus, urgency, emotional load, and calendar intensity with minimal friction.</p>
+            </article>
+            <article class="process-step reveal">
+              <span class="step-index">3</span>
+              <h3>Clarify the decision</h3>
+              <p>Use AI Clarity Chat to examine options, tradeoffs, timing, and the leadership principle at stake.</p>
+            </article>
+            <article class="process-step reveal">
+              <span class="step-index">4</span>
+              <h3>Close the insight loop</h3>
+              <p>Review outcomes and patterns so the platform becomes more personalized and more strategic over time.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div class="inner">
+          <div class="reveal">
+            <div class="eyebrow">Product Features</div>
+            <h2>Designed as a leadership operating system.</h2>
+          </div>
+          <div class="features-wrap">
+            <article class="feature-card feature-main reveal">
+              <div class="panel-label">AI Clarity Chat</div>
+              <h3>Turn pressure into a structured decision conversation.</h3>
+              <p>Ask the right questions before the irreversible ones. The chat helps you identify what is true, what is charged, what can wait, and what needs leadership attention now.</p>
+            </article>
+            <div class="feature-grid">
+              <article class="feature-card reveal">
+                <h3>Energy Dashboard</h3>
+                <p>See capacity, focus, recovery, and pressure patterns in one intelligent view.</p>
+              </article>
+              <article class="feature-card reveal">
+                <h3>Decision Journal</h3>
+                <p>Record choices, signals, values, and outcomes so judgment compounds over time.</p>
+              </article>
+              <article class="feature-card reveal">
+                <h3>Calendar Intelligence</h3>
+                <p>Understand when your schedule supports strategic thinking and when it compromises it.</p>
+              </article>
+              <article class="feature-card reveal">
+                <h3>Reflection Reports</h3>
+                <p>Receive concise leadership insights from recurring patterns, not generic encouragement.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-band" id="trust">
+        <div class="inner">
+          <div class="reveal">
+            <div class="eyebrow">Social Trust</div>
+            <h2>Private beta for leaders building with intention.</h2>
+            <p class="lead">The early platform is being shaped with founders, operators, senior managers, consultants, and executives who want a more intelligent relationship with decision pressure.</p>
+          </div>
+          <div class="trust-grid">
+            <article class="trust-card reveal">
+              <div class="stat">1,250+</div>
+              <h3>Waitlist placeholder</h3>
+              <p>Reserved for early access demand, founder updates, and beta cohort momentum.</p>
+            </article>
+            <article class="trust-card reveal">
+              <div class="stat">Beta</div>
+              <h3>Testing status</h3>
+              <p>Private feedback cycles are focused on trust, decision usefulness, privacy, and executive-grade clarity.</p>
+            </article>
+            <article class="trust-card reveal">
+              <div class="stat">01</div>
+              <h3>Founder story</h3>
+              <p>Built from the recognition that ambitious women need decision infrastructure as sophisticated as the roles they are carrying.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="vision" id="enterprise">
+        <div class="inner vision-grid">
+          <div class="reveal">
+            <div class="eyebrow">Investor Readiness</div>
+            <h2>The foundation for emotionally intelligent leadership infrastructure.</h2>
+          </div>
+          <div class="reveal">
+            <p class="lead">The platform is architected to scale beyond individual subscriptions into enterprise programs, leadership analytics, B2B partnerships, executive coaching ecosystems, and organizational wellness intelligence.</p>
+            <div class="vision-list" aria-label="Future platform capabilities">
+              <span>Multi-user organizations</span>
+              <span>Leadership team dashboards</span>
+              <span>Anonymized trend reporting</span>
+              <span>Executive wellness insights</span>
+              <span>Enterprise onboarding</span>
+              <span>Future API integrations</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="offerings">
+        <div class="inner">
+          <div class="reveal">
+            <div class="eyebrow">Premium Offerings</div>
+            <h2>Choose the level of support your decisions require.</h2>
+          </div>
+          <div class="offer-grid">
+            <article class="offer-card reveal">
+              <div>
+                <h3>Platform Subscription</h3>
+                <p>For leaders who want ongoing state-aware decision support.</p>
+                <ul>
+                  <li>AI Clarity Chat</li>
+                  <li>Energy Dashboard</li>
+                  <li>Decision Journal</li>
+                  <li>Reflection Reports</li>
+                </ul>
+              </div>
+              <a class="button secondary" href="#apply">Join Waitlist</a>
+            </article>
+            <article class="offer-card featured reveal">
+              <div>
+                <h3>Executive Sessions</h3>
+                <p>Private strategic reflection for complex leadership moments.</p>
+                <ul>
+                  <li>Decision mapping</li>
+                  <li>State and pressure audit</li>
+                  <li>Leadership clarity brief</li>
+                  <li>Follow-up insight notes</li>
+                </ul>
+              </div>
+              <a class="button" href="#apply" style="background: var(--paper); color: var(--charcoal); border-color: var(--paper)">Request Access</a>
+            </article>
+            <article class="offer-card reveal">
+              <div>
+                <h3>Leadership Intensive</h3>
+                <p>For founders and executives entering a high-stakes season.</p>
+                <ul>
+                  <li>Decision architecture</li>
+                  <li>Calendar intelligence review</li>
+                  <li>Operating rhythm design</li>
+                  <li>Strategic insight report</li>
+                </ul>
+              </div>
+              <a class="button secondary" href="#apply">Apply</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta" id="apply">
+        <div class="inner reveal">
+          <div class="eyebrow">Private Beta</div>
+          <h2>The next generation of leadership will need better decision infrastructure.</h2>
+          <p class="lead">Apply for early access to a calmer, more intelligent way to lead through pressure, complexity, and change.</p>
+          <form class="beta-form" aria-label="Beta application form">
+            <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
+            <button class="button" type="submit">Apply for Beta</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Decision OS</span>
+        <span>Decision Intelligence Infrastructure for Women Leaders</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const revealItems = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    const form = document.querySelector(".beta-form");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const button = form.querySelector("button");
+      button.textContent = "Application Noted";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
